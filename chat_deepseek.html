@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DeepSeek - Modern Chatbot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-cyan-600 min-h-screen flex flex-col items-center justify-center">
+  <div class="bg-white/90 shadow-2xl rounded-2xl p-8 w-full max-w-xl mt-10">
+    <div class="flex items-center mb-6">
+      <img src="{{ url_for('static', filename='images/deepseek.png') }}" alt="DeepSeek" class="w-12 h-12 rounded-full mr-4">
+      <h1 class="text-2xl font-bold text-gray-800">DeepSeek</h1>
+    </div>
+    <div id="chat-window" class="h-80 overflow-y-auto border rounded-lg p-4 bg-gray-50 mb-4"></div>
+    <form id="chat-form" class="flex">
+      <input id="user-input" type="text" placeholder="Type your message..." class="flex-1 border rounded-l-lg px-4 py-2 focus:outline-none" autocomplete="off" required>
+      <button type="submit" class="bg-cyan-600 text-white px-6 py-2 rounded-r-lg hover:bg-cyan-700">Send</button>
+    </form>
+  </div>
+  <script>
+    const chatWindow = document.getElementById('chat-window');
+    const chatForm = document.getElementById('chat-form');
+    const userInput = document.getElementById('user-input');
+
+    function appendMessage(sender, text) {
+      const msg = document.createElement('div');
+      msg.className = sender === 'user' ? 'text-right mb-2' : 'text-left mb-2';
+      msg.innerHTML = `<span class="inline-block px-4 py-2 rounded-lg ${sender === 'user' ? 'bg-cyan-600 text-white' : 'bg-gray-200 text-gray-900'}">${text}</span>`;
+      chatWindow.appendChild(msg);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    chatForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const message = userInput.value.trim();
+      if (!message) return;
+      appendMessage('user', message);
+      userInput.value = '';
+      appendMessage('bot', '<span class="italic text-gray-400">Typing...</span>');
+      const res = await fetch('/api/chat/deepseek', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({message})
+      });
+      const data = await res.json();
+      chatWindow.lastChild.remove(); // Remove "Typing..."
+      appendMessage('bot', data.response);
+    };
+  </script>
+</body>
+</html>

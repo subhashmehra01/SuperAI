@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select a Chatbot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center font-sans">
+
+  <div class="bg-white shadow-2xl rounded-2xl p-10 max-w-3xl w-full">
+    <h1 class="text-4xl font-bold text-gray-800 text-center mb-4">🤖 Choose Your Chatbot</h1>
+    <p class="text-center text-gray-500 mb-10">Click on a chatbot below to start chatting</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      
+      <!-- ChatGPT -->
+      <a href="{{ url_for('chatbot_ui', bot_name='chatgpt') }}" 
+         class="flex flex-col items-center bg-gray-50 p-6 rounded-xl shadow hover:shadow-xl hover:scale-105 transition transform duration-200">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT Logo" class="w-24 h-24 mb-4 object-contain bg-white rounded-full border border-gray-200 shadow-sm" 
+             alt="ChatGPT Logo" class="w-24 h-24 mb-4 object-contain bg-white rounded-full border border-gray-200 shadow-sm">
+        <span class="text-lg font-semibold text-gray-800">ChatGPT</span>
+      </a>
+
+      <!-- Google Gemini -->
+      <a href="{{ url_for('chatbot_ui', bot_name='gemini') }}" 
+         class="flex flex-col items-center bg-gray-50 p-6 rounded-xl shadow hover:shadow-xl hover:scale-105 transition transform duration-200">
+        <img src="https://files.gadgetscool.shop/static/gemini.png" 
+             alt="Google Gemini Logo" class="w-24 h-24 mb-4 object-contain bg-white rounded-full border border-gray-200 shadow-sm">
+        <span class="text-lg font-semibold text-gray-800">Google Gemini</span>
+      </a>
+
+      <!-- Grok (xAI) -->
+      <a href="{{ url_for('chatbot_ui', bot_name='grok') }}" 
+         class="flex flex-col items-center bg-gray-50 p-6 rounded-xl shadow hover:shadow-xl hover:scale-105 transition transform duration-200">
+        <img src="https://files.gadgetscool.shop/static/grok.png" 
+             alt="Grok Logo" class="w-24 h-24 mb-4 object-contain bg-white rounded-full border border-gray-200 shadow-sm">
+        <span class="text-lg font-semibold text-gray-800">Grok (xAI)</span>
+      </a>
+
+      <!-- DeepSeek -->
+      <a href="{{ url_for('chatbot_ui', bot_name='deepseek') }}" 
+         class="flex flex-col items-center bg-gray-50 p-6 rounded-xl shadow hover:shadow-xl hover:scale-105 transition transform duration-200">
+        <img src="https://files.gadgetscool.shop/static/deepseek.png" 
+             alt="DeepSeek Logo" class="w-24 h-24 mb-4 object-contain bg-white rounded-full border border-gray-200 shadow-sm">
+        <span class="text-lg font-semibold text-gray-800">DeepSeek</span>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

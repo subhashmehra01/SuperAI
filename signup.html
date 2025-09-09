@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <style>
+    /* Cozy modern style */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f6f9fc, #e9f0f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .signup-container {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      width: 350px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.6rem;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    input:focus {
+      border: 1px solid #6c63ff;
+      box-shadow: 0 0 4px rgba(108, 99, 255, 0.4);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 1rem;
+      background: #6c63ff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #5848d9;
+    }
+
+    p {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    a {
+      color: #6c63ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Create Your Account</h2>
+    <form method="POST">
+      <input type="text" name="username" placeholder="Enter Username" required>
+      <input type="email" name="email" placeholder="Enter Email" required>
+      <input type="password" name="password" placeholder="Enter Password" required>
+      <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="http://127.0.0.1:8000/login">Login</a></p>
+  </div>
+</body>
+</html>
